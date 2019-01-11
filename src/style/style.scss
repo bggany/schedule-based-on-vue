@@ -1,0 +1,149 @@
+$nav-bg:#2d2d2d;
+$alpha-color:rgba(0, 0, 0, 0);
+$nav-height:36px;
+
+html {
+	-webkit-tap-highlight-color: $alpha-color;
+}
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  background: url('/static/image/bg.jpg') no-repeat;
+  background-size:cover;
+	margin: 0;
+}
+
+.container{
+	width:100%;
+	background: rgba(255, 255, 255, 0.9);
+	min-height: 754.4px;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0.05rem, 
+						  rgb(255, 255, 255) 0px 0px 0.1rem;
+	position: relative;
+}
+
+.nav{
+	background-color: $nav-bg;
+	color:#fff;
+	height: $nav-height;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	z-index: 999;
+	font: {
+		size: 16px;
+		weight: 500;
+	}
+	display:flex;
+	justify-content: center;
+	select{
+		background-color:$nav-bg;
+		color:#fff;
+		border:none;
+		&:focus{
+			outline:none;
+		}
+		font:inherit;
+	}
+}
+@media only screen and (min-width: 768px){
+	.container,.nav{
+		width:490px;
+	}
+	.container{
+		margin: {
+			left: auto;
+			right: auto;
+		}
+	}
+	.nav{
+		left: calc(50% - 245px);
+	}
+}
+
+.header{
+	padding: {
+		top: $nav-height + 5px;
+		bottom: 5px;
+	}
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.content{
+	position: relative;
+	box-sizing: border-box;
+	height: 800px;
+	padding: 10px;
+	.item{
+		font-size:16px;
+		display: flex;
+		align-items: flex-start;
+		padding:2px;
+		.item-title{
+			order:1;
+			width:10%;
+		}
+		.item-content{
+			order:2;
+		}
+	}
+}
+.card{
+	text-align: center;
+	width:12.285%;
+	opacity: 0.6;
+	color: #fff;
+	overflow: hidden;
+	.header &{
+		border-radius: 3px;
+		opacity: 1;
+		padding: {
+			top:0.4%;
+			bottom: 0.5%;
+		}
+		font-size: 13px;
+		line-height: 14px;
+		background-color: #2d2d2d;
+	}
+	.content &{
+		box-sizing:border-box;
+		padding-top: 2%;
+		padding-bottom: 2%;
+		border-radius: 5px;
+		background-color:gainsboro;
+		text-align: left;
+		padding-left: 1.5%;
+		padding-right: 1.5%;
+		position: absolute;
+		p{
+			margin:0;
+			padding:0;
+		}
+	}
+}
+.select-card{
+	.header &{
+		background-color: #1e1e1e;
+	}
+}
+
+@for $i from 1 through 4{
+	.length-#{$i}{
+		height: (60px * $i) + (5px * ($i - 1));
+	}
+}
+
+@for $i from 1 through 12{
+	.class-#{$i}{
+		top: ($i - 1) * 65px;
+	}
+}
+
+@for $i from 1 through 7{
+	.day-#{$i}{
+		left: ($i - 1) * 14.285% + 1%;
+	}
+}
