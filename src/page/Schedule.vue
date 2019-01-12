@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
+  <div>
     <div class="nav">
-      <select v-model="theWeek">
+      <select v-model="selectWeek">
         <option v-for="index in 25" :value="index" :key='index'>第{{ index }}周</option>
       </select>
     </div>
@@ -37,52 +37,68 @@ export default {
         '#E03636', '#e4622c', '#1874ad', '#36e066', '#FF534D',
         '#25C6FC', '#FC275C', '#FCC727', '#524DFF'
       ],
-      lessonData: [// excel to json是真的好用
-        {'id': '0', 'name': '第二外语（日语）', 'room': '研713', 'day': 2, 'class': 1, 'length': 2, 'teacher': '西西木', 'start': 1, 'end': 16},
-        {'id': '1', 'name': '计算科学与数值方法', 'room': '研701阶', 'day': 3, 'class': 1, 'length': 2, 'teacher': '算数数', 'start': 1, 'end': 16},
-        {'id': '2', 'name': '计算科学与数值方法', 'room': '研1213', 'day': 5, 'class': 3, 'length': 2, 'teacher': '算数数', 'start': 8, 'end': 15},
-        {'id': '3', 'name': '毛泽东思想和中国科学社会主义理论体系概论', 'room': '研201阶', 'day': 2, 'class': 3, 'length': 2, 'teacher': '张冰冰', 'start': 1, 'end': 16},
-        {'id': '4', 'name': '毛泽东思想和中国科学社会主义理论体系概论', 'room': '研1101阶', 'day': 4, 'class': 5, 'length': 2, 'teacher': '张冰冰', 'start': 1, 'end': 16},
-        {'id': '5', 'name': '操作系统', 'room': '研1101阶', 'day': 3, 'class': 3, 'length': 2, 'teacher': '陈思思', 'start': 1, 'end': 16},
-        {'id': '6', 'name': '操作系统', 'room': '研1213', 'day': 4, 'class': 3, 'length': 2, 'teacher': '陈思思', 'start': 14, 'end': 16, 'oddOrDual': false},
-        {'id': '7', 'name': '操作系统', 'room': '研1213', 'day': 5, 'class': 5, 'length': 2, 'teacher': '陈思思', 'start': 5, 'end': 15, 'oddOrDual': true},
-        {'id': '8', 'name': '操作系统', 'room': '研201阶', 'day': 5, 'class': 5, 'length': 2, 'teacher': '陈思思', 'start': 2, 'end': 16, 'oddOrDual': false},
-        {'id': '9', 'name': 'Java语言程序设计', 'room': '研713', 'day': 4, 'class': 3, 'length': 2, 'teacher': '从岗岗', 'start': 1, 'end': 15, 'oddOrDual': true},
-        {'id': '10', 'name': 'Java语言程序设计', 'room': '研1213', 'day': 5, 'class': 3, 'length': 2, 'teacher': '从岗岗', 'start': 2, 'end': 7},
-        {'id': '11', 'name': 'Java语言程序设计', 'room': '研1213', 'day': 5, 'class': 3, 'length': 2, 'teacher': '从岗岗', 'start': 16, 'end': 16},
-        {'id': '12', 'name': 'Java语言程序设计', 'room': '研1213', 'day': 1, 'class': 5, 'length': 2, 'teacher': '从岗岗', 'start': 16, 'end': 16},
-        {'id': '13', 'name': 'Java语言程序设计', 'room': '研601阶', 'day': 2, 'class': 5, 'length': 2, 'teacher': '从岗岗', 'start': 1, 'end': 16},
-        {'id': '14', 'name': 'Java语言程序设计', 'room': '研1213', 'day': 1, 'class': 9, 'length': 2, 'teacher': '从岗岗', 'start': 8, 'end': 15},
-        {'id': '15', 'name': '计算机网络', 'room': '研1213', 'day': 1, 'class': 5, 'length': 2, 'teacher': '高成成', 'start': 8, 'end': 15},
-        {'id': '16', 'name': '计算机网络', 'room': '研601阶', 'day': 1, 'class': 7, 'length': 2, 'teacher': '高成成', 'start': 1, 'end': 16},
-        {'id': '17', 'name': '计算机网络', 'room': '研701阶', 'day': 2, 'class': 7, 'length': 2, 'teacher': '高成成', 'start': 2, 'end': 16, 'oddOrDual': false},
-        {'id': '18', 'name': '计算机组成原理', 'room': '研1101阶', 'day': 2, 'class': 7, 'length': 2, 'teacher': '张彩彩', 'start': 1, 'end': 15, 'oddOrDual': true},
-        {'id': '19', 'name': '计算机组成原理', 'room': '研201阶', 'day': 5, 'class': 7, 'length': 2, 'teacher': '张彩彩', 'start': 1, 'end': 16},
-        {'id': '20', 'name': '计算机组成原理', 'room': '东3教808', 'day': 3, 'class': 9, 'length': 2, 'teacher': '李津津', 'start': 9, 'end': 16},
-        {'id': '21', 'name': 'Internet技术与应用', 'room': '研213', 'day': 4, 'class': 7, 'length': 2, 'teacher': '陈思思', 'start': 1, 'end': 16},
-        {'id': '22', 'name': 'Internet技术与应用', 'room': '研1213', 'day': 1, 'class': 11, 'length': 2, 'teacher': '陈思思', 'start': 8, 'end': 15},
-        {'id': '23', 'name': '形势与政策', 'room': '研201阶', 'day': 1, 'class': 9, 'length': 2, 'teacher': '温媛媛', 'start': 1, 'end': 3}
-      ]
+      lessonData: []
     }
   },
   methods: {
-    show: function (id) {
-      for (let item of this.lessonData) {
-        if (item.id === id) {
-          alert(`课程名：${item.name}\n授课地点：${item.room}\n授课教师：${item.teacher}`)
-          break
-        }
+    initHeader: function () {
+      var now = new Date()
+      var sub = this.selectWeek - this.theWeek
+      if (sub !== 0) {
+        now.setDate(now.getDate() + (sub * 7))
       }
+      var month = now.getMonth() + 1
+      var day = now.getDate()
+      var week = now.getDay()
+
+      week = parseInt(week)
+      if (week === 0) {
+        week = 7
+      }
+      week--// 把周一到周日（1……6,0)转换成(0……6)
+
+      // 把当天置为选中状态
+      this.dayFlag[week] = true
+
+      var firstDay = day - week
+
+      var flag = true
+
+      for (let key in this.dayName) {
+        let arr = this.dayName[key].split('<br/>')
+        if (arr.length > 1) {
+          this.dayName[key] = arr[arr.length - 1]
+        }
+        if (firstDay <= 0) {
+          let tmp = new Date(now.valueOf())
+          tmp.setDate(firstDay)
+          this.dayName[key] = `${tmp.getDate()}<br/>${this.dayName[key]}`
+        } else if (firstDay === 1) {
+          this.dayName[key] = `${month}月<br/>${this.dayName[key]}`
+          flag = !flag
+        } else {
+          this.dayName[key] = `${firstDay}<br/>${this.dayName[key]}`
+        }
+        firstDay++
+      }
+      if (flag) {
+        this.dayName.mon = month + '/' + this.dayName.mon
+      }
+    }
+  },
+  watch: {
+    'selectWeek': function (newval) {
+      this.initHeader()
     }
   },
   computed: {
     lessonFilter: function () {
       var newList = []
       this.lessonData.forEach(item => {
-        if (item.start <= this.theWeek && item.end >= this.theWeek) { // 如果在选中周
+        if (item.start <= this.selectWeek && item.end >= this.selectWeek) { // 如果在选中周
           if (typeof (item.oddOrDual) === 'undefined') { // 如果单双周没有定义
             newList.push(item)
-          } else if (this.theWeek % 2 === (item.oddOrDual ? 1 : 0)) { // 单周时，oddOrDual为true，true==1；双周时，oddOrDual为false，false=0。
+          } else if (this.selectWeek % 2 === (item.oddOrDual ? 1 : 0)) { // 单周时，oddOrDual为true，true==1；双周时，oddOrDual为false，false=0。
             newList.push(item)
           }
         }
@@ -91,27 +107,17 @@ export default {
     }
   },
   created () {
-    var now = new Date()
-    var month = now.getMonth() + 1
-    var day = now.getDate()
-    var week = now.getDay()
-
-    week = parseInt(week)
-    if (week === 0) {
-      week = 7
-    }
-    week--// 把周一到周日（1……6,0)转换成(0……6)
-
-    // 把当天置为选中状态
-    this.dayFlag[week] = true
-
-    var firstDay = day - week
-
-    for (let key in this.dayName) {
-      this.dayName[key] = `${firstDay}<br/>${this.dayName[key]}`
-      firstDay++
-    }
-    this.dayName.mon = month + '/' + this.dayName.mon
+    this.$api.get('setting', r => {
+      this.theWeek = r.week
+      this.selectWeek = r.week
+    })
+    this.$api.get('lessons', r => {
+      this.$store.commit('init', r)
+      this.lessonData = this.$store.getters.getList
+    })
   }
 }
 </script>
+<style lang="sass">
+@import "../style/scss/schedule";
+</style>

@@ -1,0 +1,48 @@
+html {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
+	margin: 0;
+}
+#app{
+	width:100%;
+	background: rgba(255, 255, 255, 0.9);
+	min-height: 754.4px;
+	position: relative;
+}
+@media only screen and (min-width: 768px){
+  body {
+    background: url('/static/image/bg.jpg') no-repeat;
+    background-size:cover;
+  }
+	#app {
+    width:490px;
+    margin: {
+			left: auto;
+			right: auto;
+    }
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0.1rem, 
+                rgb(255, 255, 255) 0px 0px 0.4rem;
+  }
+}
+
+.slide-fade{
+  position: absolute;left:0;right: 0;
+}
+.slide-fade-enter-active {
+  transition: all 0.5s ease;
+}
+.slide-fade-leave-active {
+
+  transition: all .0.5s cubic-bezier(2.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to {
+  left:0;right: 0;
+  transform: translateX(100%);
+  opacity: 1;
+}

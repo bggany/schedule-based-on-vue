@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <div class="nav" style="justify-content:space-between;align-items: center;">
       <router-link to='/schedule' tag='span' style='padding-left:10px;'> 返回 </router-link>
       <span>课程信息</span>
@@ -20,3 +20,6 @@
     </div>
   </div>
 </template>
+<style lang="sass">
+@import "../style/scss/lessonInfo";
+</style>
