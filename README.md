@@ -1,6 +1,6 @@
-# a-schedule
+# 基于vue.js的课程表
 
-> A Vue.js project
+> 仿照超级课程表，课程格子这类型的应用写的。
 
 ## Build Setup
 
@@ -18,4 +18,4 @@ npm run build
 npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+测试用的假接口 [mock](https://github.com/bggany/mock-for-schedule)
