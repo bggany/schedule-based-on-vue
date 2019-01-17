@@ -1,0 +1,52 @@
+@import 'base/base';
+
+.card{
+	text-align: center;
+	width:torem(60px);
+	opacity: 0.6;
+	color: #fff;
+	display: flex;
+	justify-content: center;
+	.header &{
+		border-radius: torem(3px);
+		opacity: 1;
+		background-color: #2d2d2d;
+		align-items: center;
+	}
+	.content &{
+		border-radius: torem(5px);
+		position: absolute;
+		align-items: flex-start;
+		padding:1%;
+		box-sizing: border-box;
+		span{
+			overflow: hidden;
+		}
+	}
+}
+.select-card{
+	.header &{
+		background-color: #1e1e1e;
+	}
+}
+@for $i from 1 through 4{
+	.length-#{$i}{
+		height: (torem(60px) * $i) + (torem(5px) * ($i - 1));
+	}
+}
+@for $i from 1 through 12{
+	.class-#{$i}{
+		top: ($i - 1) * torem(65px);
+	}
+}
+@for $i from 1 through 7{
+	.day-#{$i}{
+		left: ($i - 1) * torem(70px) + torem(5px);
+	}
+}
+@media only screen and (min-width:$pc-min-width){
+	$nav-height:torem(32px);
+	.content .card{
+		@include fz(14px);
+	}
+}

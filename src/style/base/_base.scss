@@ -1,118 +1,16 @@
+@function torem($px) {
+  @return $px / 49px * 1rem;
+}
+@mixin fz($font-size) {
+  font-size: $font-size;
+  [data-dpr="2"] & {
+      font-size: $font-size * 2;
+  }
+  [data-dpr="3"] & {
+      font-size: $font-size * 3;
+  }
+}
+$pc-min-width:768px;
+$app-width:torem(490px);
 $nav-bg:#2d2d2d;
-$nav-height:36px;
-
-.nav{
-	background-color: $nav-bg;
-	color:#fff;
-	height: $nav-height;
-	width: 100%;
-	position: fixed;
-	top: 0;
-	z-index: 999;
-	font: {
-		size: 16px;
-		weight: 500;
-	}
-	display:flex;
-	justify-content: center;
-	select{
-		background-color:$nav-bg;
-		color:#fff;
-		border:none;
-		&:focus{
-			outline:none;
-		}
-		font:inherit;
-	}
-}
-@media only screen and (min-width: 768px){
-	.nav{
-		width:490px;
-		left: calc(50% - 245px);
-	}
-}
-
-.header{
-	padding: {
-		top: $nav-height + 5px;
-		bottom: 5px;
-	}
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-}
-.content{
-	position: relative;
-	box-sizing: border-box;
-	height: 800px;
-	padding: 10px;
-	.item{
-		font-size:16px;
-		display: flex;
-		align-items: flex-start;
-		padding:2px;
-		.item-title{
-			order:1;
-			width:10%;
-		}
-		.item-content{
-			order:2;
-		}
-	}
-}
-.card{
-	text-align: center;
-	width:12.285%;
-	opacity: 0.6;
-	color: #fff;
-	overflow: hidden;
-	.header &{
-		border-radius: 3px;
-		opacity: 1;
-		padding: {
-			top:0.4%;
-			bottom: 0.5%;
-		}
-		font-size: 13px;
-		line-height: 14px;
-		background-color: #2d2d2d;
-	}
-	.content &{
-		box-sizing:border-box;
-		padding-top: 2%;
-		padding-bottom: 2%;
-		border-radius: 5px;
-		background-color:gainsboro;
-		text-align: left;
-		padding-left: 1.5%;
-		padding-right: 1.5%;
-		position: absolute;
-		p{
-			margin:0;
-			padding:0;
-		}
-	}
-}
-.select-card{
-	.header &{
-		background-color: #1e1e1e;
-	}
-}
-
-@for $i from 1 through 4{
-	.length-#{$i}{
-		height: (60px * $i) + (5px * ($i - 1));
-	}
-}
-
-@for $i from 1 through 12{
-	.class-#{$i}{
-		top: ($i - 1) * 65px;
-	}
-}
-
-@for $i from 1 through 7{
-	.day-#{$i}{
-		left: ($i - 1) * 14.285% + 1%;
-	}
-}
+$nav-height:torem(44px) !default;

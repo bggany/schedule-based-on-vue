@@ -1,0 +1,43 @@
+@import 'base/base';
+
+.nav{
+	justify-content:space-between;
+	align-items: center;
+	@include fz(16px);
+}
+.header{
+	justify-content: flex-start;
+	height: 100%;
+	p{
+		padding: {
+			left:20px;
+			right: 20px;
+			top:20px;
+		}
+		@include fz(20px);
+		margin:0;
+	}
+}
+.content{
+  .item{
+		display: flex;
+		align-items: flex-start;
+		padding: {
+			bottom: 10px;
+		}
+		@include fz(14px);
+		.item-title{
+			order:1;
+			width:10%;
+		}
+		.item-content{
+			order:2;
+		}
+		.iconfont{
+			padding: {
+				right: 20px;
+			}
+			@include fz(14px);
+		}
+	}
+}

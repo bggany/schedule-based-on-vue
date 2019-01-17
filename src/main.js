@@ -6,6 +6,8 @@ import router from './router'
 import api from './api/index'
 import Vuex from 'vuex'
 import store from './store/index'
+import 'lib-flexible'
+import '../static/css/iconfont.css'
 
 Vue.prototype.$api = api
 Vue.use(Vuex)

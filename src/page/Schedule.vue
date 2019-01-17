@@ -13,7 +13,7 @@
       <div :class="['card','day-'+lesson.day,'class-'+lesson.class,'length-'+lesson.length]"
       :style="{'background-color':colorList[(lesson.name.length)%9]}"
       v-for="lesson in lessonFilter" :key='lesson.id'>
-        <router-link :to="{name: 'lesson-info', params:{lessonInfo:lesson}}" tag='p'>
+        <router-link :to="{name: 'lesson-info', query:{lessonId:lesson.id}}" tag='span'>
           {{lesson.name+'@'+lesson.room}}
         </router-link>
       </div>
@@ -119,5 +119,5 @@ export default {
 }
 </script>
 <style lang="sass">
-@import "../style/scss/schedule";
+@import "../style/schedule";
 </style>

@@ -1,36 +1,6 @@
-html {
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.42857143;
-  color: #333;
-  background-color: #fff;
-	margin: 0;
-}
-#app{
-	width:100%;
-	background: rgba(255, 255, 255, 0.9);
-	min-height: 754.4px;
-	position: relative;
-}
-@media only screen and (min-width: 768px){
-  body {
-    background: url('/static/image/bg.jpg') no-repeat;
-    background-size:cover;
-  }
-	#app {
-    width:490px;
-    margin: {
-			left: auto;
-			right: auto;
-    }
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0.1rem, 
-                rgb(255, 255, 255) 0px 0px 0.4rem;
-  }
-}
+@import 'base/base';
 
+//切换动画
 .slide-fade{
   position: absolute;left:0;right: 0;
 }
@@ -38,11 +8,91 @@ body {
   transition: all 0.5s ease;
 }
 .slide-fade-leave-active {
-
   transition: all .0.5s cubic-bezier(2.0, 0.5, 0.8, 1.0);
 }
 .slide-fade-enter, .slide-fade-leave-to {
   left:0;right: 0;
   transform: translateX(100%);
   opacity: 1;
+}
+html {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #333;
+  background-color: #fff;
+	margin: 0;
+	line-height: 1.33333;
+}
+#app{
+  width: $app-width;
+	background: rgba(255, 255, 255, 0.9);
+	position: relative;
+}
+.nav{
+	width:$app-width;
+	background-color: $nav-bg;
+	color:#fff;
+	height: $nav-height;
+	position: fixed;
+	top: 0;
+	z-index: 999;
+	display:flex;
+	justify-content: center;
+	select{
+		background-color:$nav-bg;
+		color:#fff;
+		border:none;
+		&:focus{
+			outline:none;
+		}
+		font-weight: 500;
+		@include fz(14px);
+	}
+}
+
+.header{
+	padding: {
+		top: $nav-height + torem(5px);
+		bottom: torem(5px);
+	}
+	display: flex;
+	justify-content: space-around;
+	align-items: stretch;
+	height: $nav-height;
+	line-height: 1;
+}
+.content{
+	position: relative;
+	box-sizing: border-box;
+	height: torem(780px);
+	padding: 20px;
+}
+@media only screen and (min-width:$pc-min-width){
+  body {
+    background: url('/static/image/bg.jpg') no-repeat;
+    background-size:cover;
+  }
+	#app {
+    margin: {
+			left: auto;
+			right: auto;
+    }
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0.1rem, 
+                rgb(255, 255, 255) 0px 0px 0.4rem;
+	}
+	$nav-height:torem(32px);
+	.nav,.header{
+		height: $nav-height;
+	}
+	.header{
+		padding-top: $nav-height + torem(5px);
+		line-height: 1.33333;
+	}
+	.nav{
+		select, span{
+			@include fz(16px);
+		}
+	}
 }
